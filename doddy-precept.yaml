@@ -1,0 +1,42 @@
+pipeline:
+  environment:
+    GLOBAL_ENV_1: "GLOBAL ENV 1"
+    GLOBAL_ENV_2: "GLOBAL ENV 2"
+    GLOBAL_ENV_3: "GLOBAL ENV 3"
+  stages:
+    dev:
+      agent: "dev"
+      environment:
+        DEV_LOCAL_1: "test 1"
+        DEV_LOCAL_2: "test 2"
+        DEV_LOCAL_3: "test 3"
+      jobs:
+        - command: 'echo "Hello DEV"'
+        - command: 'echo $PATH'
+    qa:
+      agent: "dev"
+      permissions:
+        view:
+          - "view"
+          - "operator"
+          - "admin"
+        run:
+          - "operator"
+          - "admin"
+      jobs:
+        - command: 'echo "Hello QA"'
+        - command: 'echo $PATH'
+    uat:
+      agent: "dev"
+      environment:
+        UAT_LOCAL_1: "test 7"
+        UAT_LOCAL_2: "test 8"
+        UAT_LOCAL_3: "test 9"
+      permissions:
+        view:
+          - "admin"
+        run:
+          - "admin"
+      jobs:
+        - command: 'echo "Hello uat"'
+        - command: 'echo $PATH'
