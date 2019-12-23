@@ -15,14 +15,6 @@ pipeline:
         - command: 'echo $PATH'
     qa:
       agent: "dev"
-      permissions:
-        view:
-          - "view"
-          - "operator"
-          - "admin"
-        run:
-          - "operator"
-          - "admin"
       jobs:
         - command: 'echo "Hello QA"'
         - command: 'echo $PATH'
@@ -32,11 +24,6 @@ pipeline:
         UAT_LOCAL_1: "test 7"
         UAT_LOCAL_2: "test 8"
         UAT_LOCAL_3: "test 9"
-      permissions:
-        view:
-          - "admin"
-        run:
-          - "admin"
       jobs:
         - command: 'echo "Hello uat"'
         - command: 'echo $PATH'
